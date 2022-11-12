@@ -4,9 +4,8 @@ import configuration.common.Constantes;
 import jakarta.inject.Singleton;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
-import org.yaml.snakeyaml.Yaml;
 
-import java.util.Map;
+import java.util.Properties;
 
 @Singleton
 @Getter
@@ -20,12 +19,12 @@ public class Configuration {
 
     public Configuration() {
         try {
-            Yaml yaml = new Yaml();
-            Map<String, Object> propertiesMap = yaml.load(getClass().getClassLoader().getResourceAsStream(Constantes.CONFIG_YAML_PATH));
-            this.url = (String) propertiesMap.get(Constantes.URL);
-            this.password = (String) propertiesMap.get(Constantes.PASSWORD);
-            this.user = (String) propertiesMap.get(Constantes.USER);
-            this.driver = (String) propertiesMap.get(Constantes.DRIVER);
+            Properties properties = new Properties();
+            properties.load(getClass().getClassLoader().getResourceAsStream(Constantes.CONFIG_YAML_PATH));
+            this.url = properties.getProperty(Constantes.URL);
+            this.password = properties.getProperty(Constantes.PASSWORD);
+            this.user = properties.getProperty(Constantes.USER);
+            this.driver = properties.getProperty(Constantes.DRIVER);
         } catch (Exception ex) {
             log.error(ex.getMessage(), ex);
         }
