@@ -864,13 +864,462 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get one rating",
+					"id": "0cde8e3e-5c27-4838-a8b0-3ab50b4103d0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/ratings/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ratings",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a rating",
+					"id": "db419f8f-396a-4e6e-adb7-458237cb5ac3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"articleId\": 4,\r\n    \"rating\": 8,\r\n    \"readerId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ratings/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ratings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a rating",
+					"id": "bc4559fb-fc59-47a4-9f2c-f5709866850e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"articleId\": 3,\r\n    \"id\": 9,\r\n    \"rating\": 2,\r\n    \"readerId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ratings/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ratings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a rating",
+					"id": "69288ada-c2fb-44b0-8246-c7d5f5addf3f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/ratings/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ratings",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ratings by newspaper",
+					"id": "06fda3ec-e0b0-4745-b718-f5d14a4e986c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/ratings/newspaper/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ratings",
+								"newspaper",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "10b05d1e-41ae-44ae-8dcf-7bbdc2a42143"
 		},
 		{
 			"name": "Subscriptions",
-			"item": [],
+			"item": [
+				{
+					"name": "Get all subscriptions",
+					"id": "bf190ace-469b-4809-9e64-2c91c2a045fb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get subscriptions by reader",
+					"id": "a4fafbf6-1fa2-42c2-8d57-8c431d791726",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/reader/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								"reader",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get subscriptions by newspaper",
+					"id": "157ef7f2-cf08-4d26-8257-61e25458e8c3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/newspaper/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								"newspaper",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  10 oldest subscriptions by newspaper",
+					"id": "09332d5f-2592-4b4f-9069-c83e3acc09b1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/newspaper/:id/oldest",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								"newspaper",
+								":id",
+								"oldest"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one subscription",
+					"id": "0b6c1ba9-9cb6-48c6-b27e-25fb11d111e4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/id?idReader=2&idNewspaper=3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								"id"
+							],
+							"query": [
+								{
+									"key": "idReader",
+									"value": "2"
+								},
+								{
+									"key": "idNewspaper",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a subscription",
+					"id": "e5a12091-7f56-4f52-bf09-4dba4f582d24",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newspaperId\": 5,\r\n    \"readerId\": 2,\r\n    \"signingDate\": \"2022-11-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel a subscription",
+					"id": "264c9eb9-7278-4b81-b556-cf649a78de6a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newspaperId\": 5,\r\n    \"readerId\": 2,\r\n    \"signingDate\": \"2022-11-01\",\r\n    \"cancellationDate\": \"2023-11-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a subscription",
+					"id": "a70e1aff-424a-4d0b-a1bb-f6c07231729f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/id?idReader=2&idNewspaper=5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								"id"
+							],
+							"query": [
+								{
+									"key": "idReader",
+									"value": "2"
+								},
+								{
+									"key": "idNewspaper",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"id": "8eeabd0d-635f-495f-a8c7-3a8defbe4d15"
 		}
 	],
