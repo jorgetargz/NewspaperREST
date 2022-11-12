@@ -177,7 +177,6 @@ public class ReadersDaoImpl implements ReadersDao {
             if (reader.getLogin() != null) {
                 preparedStatementUpdateCredentials.setString(1, reader.getLogin().getUsername());
                 preparedStatementUpdateCredentials.setString(2, reader.getLogin().getPassword());
-                preparedStatementUpdateCredentials.setInt(3, reader.getId());
                 preparedStatementUpdateCredentials.executeUpdate();
             }
 

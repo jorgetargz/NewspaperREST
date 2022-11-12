@@ -7,7 +7,6 @@ import domain.modelo.excepciones.ValidationException;
 import domain.services.ServicesSubscriptions;
 import jakarta.inject.Inject;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class ServicesSubscriptionsImpl implements ServicesSubscriptions {
@@ -55,7 +54,7 @@ public class ServicesSubscriptionsImpl implements ServicesSubscriptions {
     @Override
     public Subscription getSubscription(String idReader, String idNewspaper) {
         try {
-            return daoSubscriptions.get(Integer.parseInt(idReader), Integer.parseInt(idNewspaper));
+            return daoSubscriptions.get(Integer.parseInt(idNewspaper), Integer.parseInt(idReader));
         } catch (NumberFormatException e) {
             throw new ValidationException(Constantes.PARAMETER_ID_MUST_BE_A_NUMBER);
         }
@@ -68,8 +67,6 @@ public class ServicesSubscriptionsImpl implements ServicesSubscriptions {
 
     @Override
     public boolean cancelSubscription(Subscription subscription) {
-        LocalDate today = LocalDate.now();
-        subscription.setCancellationDate(today);
         return daoSubscriptions.update(subscription);
     }
 
