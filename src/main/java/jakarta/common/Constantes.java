@@ -20,7 +20,6 @@ public class Constantes {
     public static final String ID_PATH = "/id";
     //Parameters for REST
     public static final String ID = "id";
-    public static final String PASSWORD = "newPass";
     public static final String ID_READER = "idReader";
     public static final String ID_NEWSPAPER = "idNewspaper";
 
