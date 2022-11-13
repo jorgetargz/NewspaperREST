@@ -57,6 +57,7 @@ public class Constantes {
     public static final String NO_SUBSCRIPTIONS_OF_THIS_NEWSPAPER = "There are no subscriptions of this newspaper in the database";
     public static final String NO_SUBSCRIPTIONS_OF_THIS_READER = "There are no subscriptions of this reader in the database";
     public static final String SUBSCRIPTION_NOT_FOUND = "There is no subscription of this newspaper and reader in the database";
+
     private Constantes() {
     }
 }

@@ -3,8 +3,8 @@ package jakarta.rest.impl;
 
 import domain.modelo.Subscription;
 import domain.services.ServicesSubscriptions;
-import jakarta.inject.Inject;
 import jakarta.common.Constantes;
+import jakarta.inject.Inject;
 import jakarta.rest.RESTSubscriptions;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -83,7 +83,7 @@ public class RESTSubscriptionsImpl implements RESTSubscriptions {
     @Path(Constantes.ID_PATH)
     public Response deleteSubscription(@QueryParam(Constantes.ID_READER) String idReader, @QueryParam(Constantes.ID_NEWSPAPER) String idNewspaper) {
         if (servicesSubscriptions.deleteSubscription(servicesSubscriptions.getSubscription(idReader, idNewspaper))) {
-            return Response.status(Response.Status.OK).build();
+            return Response.status(Response.Status.RESET_CONTENT).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }

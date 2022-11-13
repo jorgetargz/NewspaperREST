@@ -154,14 +154,8 @@ public class ReadersDaoImpl implements ReadersDao {
             con.commit();
             return true;
         } catch (SQLException ex) {
-            try {
-                con.rollback();
-            } catch (SQLException e) {
-                log.error(e.getMessage(), e);
-                throw new DatabaseException(ex.getMessage());
-            }
-            log.error(ex.getMessage(), ex);
-            throw new DatabaseException(ex.getMessage());
+            transactionFailed(con, ex);
+            return false;
         }
     }
 
@@ -209,15 +203,20 @@ public class ReadersDaoImpl implements ReadersDao {
             con.commit();
             return true;
         } catch (SQLException ex) {
-            try {
-                con.rollback();
-            } catch (SQLException e) {
-                log.error(e.getMessage(), e);
-                throw new DatabaseException(ex.getMessage());
-            }
-            log.error(ex.getMessage(), ex);
+            transactionFailed(con, ex);
+            return false;
+        }
+    }
+
+    private static void transactionFailed(Connection con, SQLException ex) {
+        try {
+            con.rollback();
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
             throw new DatabaseException(ex.getMessage());
         }
+        log.error(ex.getMessage(), ex);
+        throw new DatabaseException(ex.getMessage());
     }
 
     private List<Reader> getReadersFromRS(ResultSet rs) throws SQLException {

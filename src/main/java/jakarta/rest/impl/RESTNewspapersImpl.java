@@ -2,8 +2,8 @@ package jakarta.rest.impl;
 
 import domain.modelo.Newspaper;
 import domain.services.ServicesNewspapers;
-import jakarta.inject.Inject;
 import jakarta.common.Constantes;
+import jakarta.inject.Inject;
 import jakarta.rest.RESTNewspapers;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -51,7 +51,7 @@ public class RESTNewspapersImpl implements RESTNewspapers {
     @PUT
     public Response updateNewspaper(Newspaper newspaper) {
         if (servicesNewspapers.updateNewspaper(newspaper)) {
-            return Response.status(Response.Status.OK).build();
+            return Response.status(Response.Status.RESET_CONTENT).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }

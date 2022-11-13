@@ -2,8 +2,8 @@ package jakarta.rest.impl;
 
 import domain.modelo.Reader;
 import domain.services.ServicesReaders;
-import jakarta.inject.Inject;
 import jakarta.common.Constantes;
+import jakarta.inject.Inject;
 import jakarta.rest.RESTReaders;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -75,7 +75,7 @@ public class RESTReadersImpl implements RESTReaders {
     @Path(Constantes.ID_PATH_PARAM)
     public Response deleteReader(@PathParam(Constantes.ID) String id) {
         if (servicesReaders.deleteReader(servicesReaders.getReader(id))) {
-            return Response.status(Response.Status.OK).build();
+            return Response.status(Response.Status.RESET_CONTENT).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }

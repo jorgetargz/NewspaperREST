@@ -12,7 +12,7 @@ public class ListenerConfig implements ServletContextListener {
     private final DBConnection pool;
 
     @Inject
-    public ListenerConfig(Configuration config, DBConnection pool) {
+    public ListenerConfig(DBConnection pool) {
         this.pool = pool;
     }
 

@@ -2,8 +2,8 @@ package jakarta.rest.impl;
 
 import domain.modelo.ArticleRating;
 import domain.services.ServicesRatings;
-import jakarta.inject.Inject;
 import jakarta.common.Constantes;
+import jakarta.inject.Inject;
 import jakarta.rest.RESTRatings;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -68,7 +68,7 @@ public class RESTRatingsImpl implements RESTRatings {
     @Path(Constantes.ID_PATH_PARAM)
     public Response deleteRating(@PathParam(Constantes.ID) String id) {
         if (servicesRatings.deleteRating(servicesRatings.getRating(id))) {
-            return Response.status(Response.Status.OK).build();
+            return Response.status(Response.Status.RESET_CONTENT).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }

@@ -49,15 +49,7 @@ public class SubscriptionsDaoImpl implements SubscriptionsDao {
         try (Connection con = dbConnection.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement(SQLQueries.SELECT_SUBSCRIPTIONS_BY_NEWSPAPER_QUERY)) {
 
-            preparedStatement.setInt(1, newspaperId);
-            ResultSet rs = preparedStatement.executeQuery();
-            List<Subscription> list = getSubscriptionsFromRS(rs);
-            if (list.isEmpty()) {
-                log.info(Constantes.NO_SUBSCRIPTIONS_OF_THIS_NEWSPAPER);
-                throw new NotFoundException(Constantes.NO_SUBSCRIPTIONS_OF_THIS_NEWSPAPER);
-            } else {
-                return list;
-            }
+            return getSubscriptions(newspaperId, preparedStatement);
         } catch (SQLException ex) {
             log.error(ex.getMessage(), ex);
             throw new DatabaseException(ex.getMessage());
@@ -178,19 +170,22 @@ public class SubscriptionsDaoImpl implements SubscriptionsDao {
     public List<Subscription> getOldestSubscriptionsByNewspaper(int newspaperId) {
         try (Connection con = dbConnection.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement(SQLQueries.SELECT_OLDEST_SUBSCRIPTIONS_BY_NEWSPAPER_QUERY)) {
-
-            preparedStatement.setInt(1, newspaperId);
-            ResultSet rs = preparedStatement.executeQuery();
-            List<Subscription> list = getSubscriptionsFromRS(rs);
-            if (list.isEmpty()) {
-                log.info(Constantes.NO_SUBSCRIPTIONS_OF_THIS_NEWSPAPER);
-                throw new NotFoundException(Constantes.NO_SUBSCRIPTIONS_OF_THIS_NEWSPAPER);
-            } else {
-                return list;
-            }
+            return getSubscriptions(newspaperId, preparedStatement);
         } catch (SQLException ex) {
             log.error(ex.getMessage(), ex);
             throw new DatabaseException(ex.getMessage());
+        }
+    }
+
+    private List<Subscription> getSubscriptions(int newspaperId, PreparedStatement preparedStatement) throws SQLException {
+        preparedStatement.setInt(1, newspaperId);
+        ResultSet rs = preparedStatement.executeQuery();
+        List<Subscription> list = getSubscriptionsFromRS(rs);
+        if (list.isEmpty()) {
+            log.info(Constantes.NO_SUBSCRIPTIONS_OF_THIS_NEWSPAPER);
+            throw new NotFoundException(Constantes.NO_SUBSCRIPTIONS_OF_THIS_NEWSPAPER);
+        } else {
+            return list;
         }
     }
 

@@ -2,8 +2,8 @@ package jakarta.rest.impl;
 
 import domain.modelo.*;
 import domain.services.ServicesArticles;
-import jakarta.inject.Inject;
 import jakarta.common.Constantes;
+import jakarta.inject.Inject;
 import jakarta.rest.RESTArticles;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -143,7 +143,7 @@ public class RESTArticlesImpl implements RESTArticles {
     @Path(Constantes.ARTICLE_TYPES_PATH + Constantes.ID_PATH_PARAM)
     public Response deleteArticleType(@PathParam(Constantes.ID) String id) {
         if (servicesArticles.deleteArticleType(servicesArticles.getArticleType(id))) {
-            return Response.status(Response.Status.OK).build();
+            return Response.status(Response.Status.RESET_CONTENT).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
